@@ -1,3 +1,9 @@
+if [ -a ~/install_log ]; then
+	rm ~/install_log
+fi
+
+touch ~/install_log
+
 echo "Downloading GetDeb and PlayDeb" &&
 wget http://archive.getdeb.net/install_deb/getdeb-repository_0.1-1~getdeb1_all.deb http://archive.getdeb.net/install_deb/playdeb_0.3-1~getdeb1_all.deb &&
 
@@ -80,3 +86,38 @@ sudo apt-get install virtualbox
 echo "install vagrant"
 sudo apt-get install vagrant
 sudo apt-get install virtualbox-dkms
+
+#########################
+#   FUNCTIONS - TOOLS   #
+#########################
+
+function install_with_log () {
+	sudo apt-get install $1
+	STATUS=$?
+	if [ $STATUS -eq 0 ]; then
+		echo $1 install success >> ~/install_log
+	else
+		echo $1 install error >> ~/install_log
+		error $STATUS >> ~/install_log
+	fi
+	echo >> ~/install_log
+}
+
+function error () {
+	case $1 in
+	    1 )
+	        echo "Catchall for general errors" ;;
+	    2 )
+	        echo "Misuse of shell builtins" ;;
+	    126 )
+			echo  "Command invoked cannot execute" ;;
+		127 )
+			echo "command not found" ;;
+		128 )
+			echo "Invalid argument to exit" ;;
+		100 )
+			echo "Unable to locate package" ;;
+		* )
+			echo "unknow error code $1" ;;
+	esac
+}
