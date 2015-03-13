@@ -87,6 +87,10 @@ echo "install vagrant"
 sudo apt-get install vagrant
 sudo apt-get install virtualbox-dkms
 
+echo "install node and npm"
+sudo apt-get install nodejs
+sudo apt-get install npm
+
 #########################
 #   FUNCTIONS - TOOLS   #
 #########################
