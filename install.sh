@@ -84,12 +84,69 @@ echo "install virtualbox"
 sudo apt-get install virtualbox
 
 echo "install vagrant"
-sudo apt-get install vagrant
+cd ~/Downloads
+wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.2_x86_64.deb
+sudo dpkg -i vagrant_1.7.2_x86_64.deb
 sudo apt-get install virtualbox-dkms
+
+echo "nfs server"
+sudo apt-get install nfs-kernel-server
+sudo mkdir -p /export/users
+sudo chmod 777 /export
+sudo chmod 777 /export/users
 
 echo "install node and npm"
 sudo apt-get install nodejs
 sudo apt-get install npm
+sudo apt-get install nodejs-legacy
+
+echo "install gulp global"
+sudo npm install -g gulp
+
+echo "install bower global"
+sudo npm install -g bower
+
+echo "install ruby"
+	sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
+
+	cd
+	git clone git://github.com/sstephenson/rbenv.git .rbenv
+	echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zsh_config/.zshrc
+	echo 'eval "$(rbenv init -)"' >> ~/.zsh_config/.zshrc
+	exec $SHELL
+
+	git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+	echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.zsh_config/.zshrc
+	exec $SHELL
+
+	git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash
+
+	rbenv install 2.2.1
+	rbenv global 2.2.1
+	exec $SHELL
+
+	# tell Rubygems not to install the documentation for each package locally
+	echo "gem: --no-ri --no-rdoc" > ~/.gemrc
+
+echo "install bundler"
+	sudo gem install bundler
+
+echo "install sass"
+	sudo gem install sass
+
+# echo "install rails"
+# gem install rails -v 4.2.0
+# rbenv rehash
+
+# echo "install my_sql"
+# sudo apt-get install mysql-server mysql-client libmysqlclient-dev
+
+# echo "install postgres"
+# sudo sh -c "echo 'deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main' > /etc/apt/sources.list.d/pgdg.list"
+# wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+# sudo apt-get update
+# sudo apt-get install postgresql-common
+# sudo apt-get install postgresql-9.3 libpq-dev
 
 #########################
 #   FUNCTIONS - TOOLS   #
