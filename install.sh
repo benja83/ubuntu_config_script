@@ -148,6 +148,12 @@ echo "install sass"
 # sudo apt-get install postgresql-common
 # sudo apt-get install postgresql-9.3 libpq-dev
 
+echo "install spotify"
+	sudo apt-add-repository -y "deb http://repository.spotify.com stable non-free" &&
+	sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59 &&
+	sudo apt-get update -qq &&
+	sudo apt-get install spotify-client
+
 #########################
 #   FUNCTIONS - TOOLS   #
 #########################
