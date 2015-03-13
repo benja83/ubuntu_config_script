@@ -24,8 +24,7 @@ echo "Add webupd8team repository"
 sudo add-apt-repository -y ppa:webupd8team/y-ppa-manager
 
 echo 'deb http://download.videolan.org/pub/debian/stable/ /' | sudo tee -a /etc/apt/sources.list.d/libdvdcss.list &&
-echo 'deb-src http://download.videolan.org/pub/debian/stable/ /' | sudo tee -a /etc/apt/sources.list.d/libdvdcss.list &&
-wget -O - http://download.videolan.org/pub/debian/videolan-apt.asc|sudo apt-key add -
+echo 'deb-src http://download.videolan.org/pub/debian/stable/ /' | sudo tee -a /etc/apt/sources.list.d/libdvdcss.list && wget -O - http://download.videolan.org/pub/debian/videolan-apt.asc|sudo apt-key add -
 
 sudo apt-get update
 
