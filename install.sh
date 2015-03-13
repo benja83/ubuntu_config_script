@@ -73,3 +73,10 @@ echo "configure zsh"
 cd ~
 git clone https://github.com/benja83/zsh_config.git
 sh zsh_config/install.sh
+
+echo "install virtualbox"
+sudo apt-get install virtualbox
+
+echo "install vagrant"
+sudo apt-get install vagrant
+sudo apt-get install virtualbox-dkms
