@@ -96,15 +96,22 @@ sudo chmod 777 /export
 sudo chmod 777 /export/users
 
 echo "install node and npm"
-sudo apt-get install nodejs
-sudo apt-get install npm
-sudo apt-get install nodejs-legacy
+	wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.24.0/install.sh | bash
+	echo 'export NVM_DIR="/home/ben/.nvm"' >> ~/.zsh_config/.zshrc
+	echo '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" ' >> ~/.zsh_config/.zshrc  # This loads nvm
+	echo '[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion' >> ~/.zsh_config/.zshrc
+	nvm install 0.10
+	touch .nvm
+	echo '0.10' >> ~/.nvm
 
 echo "install gulp global"
-sudo npm install -g gulp
+	sudo npm install -g gulp
 
 echo "install bower global"
-sudo npm install -g bower
+	sudo npm install -g bower
+
+echo "install gruny global"
+	sudo npm install -g grunt-cli
 
 echo "install ruby"
 	sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
