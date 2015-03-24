@@ -148,6 +148,9 @@ echo "install bundler"
 echo "install sass"
 	sudo gem install sass
 
+echo "install php"
+	sudo apt-get install php5 libapache2-mod-php5 php5-mcrypt
+
 # echo "install rails"
 # gem install rails -v 4.2.0
 # rbenv rehash
